@@ -13,17 +13,17 @@
 <script>
 import Item from '@/components/Item'
 import { createClient } from '~/plugins/contentful.js'
-
 const client = createClient()
-
 export default {
   components: {
     Item
   },
-  asyncData() {
+  asyncData ({params}) {
     return Promise.all([
       client.getEntries({
-        'content_type':'work',
+        'content_type': 'work',
+        'fields.category.sys.id': params.id,
+        //idパラメータで指定された特定のカテゴリを持つ記事を取得したい,カテゴリタグに紐づけられたカテゴリデータのIDがURL内のidパラメータと等しい記事が取得される
         order: '-sys.createdAt'
       })
     ]).then(([works]) => {

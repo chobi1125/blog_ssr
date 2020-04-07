@@ -36,19 +36,23 @@ export default {
   ** Global CSS
   */
   css: [
+    // プロジェクト内の CSS ファイル
+    '@/assets/css/common.css'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
-    // { src: '~plugins/vuesax.js' }
+    { src: '~plugins/vuesax.js' }
+    // { src: '~plugins/markdownit' }
+    // '~/plugins/markdownit'
   ],
   /*
   ** Nuxt.js dev-modules
   */
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
-    '@nuxtjs/eslint-module',
+    // '@nuxtjs/eslint-module',
     '@nuxtjs/vuetify'
   ],
   /*

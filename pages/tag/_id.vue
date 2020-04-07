@@ -1,5 +1,5 @@
 <template>
-  <!-- グリッドシステムを使うために必要。display:flexの意味を持つ wrap属性が肝？？-->
+  <!-- Itemコンポーネントでビューを作っているので一覧表示のデザインは基本的に同じ。index.vueと違うデータを受け取ってItemコンポーネントにprops、表示を変えているだけ。 -->
   <v-layout column justify-center align-center wrap>
     <!-- 12分割のグリッドシステムを採用している。xsは600px未満でスマホ、smは600～960pxでipad(768px) -->
     <v-flex xs12 sm8 md6>
@@ -13,19 +13,18 @@
 <script>
 import Item from '@/components/Item'
 import { createClient } from '~/plugins/contentful.js'
-
 const client = createClient()
-
 export default {
   components: {
     Item
   },
-  asyncData() {
+  asyncData ({params}) {
     return Promise.all([
       client.getEntries({
-        'content_type':'work',
+        'content_type': 'work',
+        'fields.tag.sys.id': params.id,
         order: '-sys.createdAt'
-      })
+      }),
     ]).then(([works]) => {
       return {
         works: works.items

@@ -22,7 +22,7 @@
     "markdown-it-table-of-contents": "^0.4.4",
     "markdown-it-toc": "^1.1.0",
     "material-icons": "^0.3.1",
-    "nuxt": "^2.0.0",
+    "nuxt": "^2.15.8",
     "nuxt-fontawesome": "^0.4.0",
     "vuesax": "^3.11.13"
   },
